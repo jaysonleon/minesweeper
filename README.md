@@ -1,0 +1,19 @@
+# Minesweeper Game in Python
+#### Video Demo: https://youtu.be/4OSIeQthVd8
+#### Description:
+This is a simple implementation of the classic Minesweeper game in Python. You can create a new game board, dig for cells, and play until you either win by clearing all non-bomb cells or lose by hitting a mine.
+## Features
+- Customizable game board dimensions and number of bombs.
+- Recursive digging to reveal adjacent empty cells.
+- User-friendly input for selecting cells to dig.
+- Win or lose detection with game over messages.
+## Implementation Details:
+The game begins with randomizing the safe and "dangerous" mines throughout the board. For this implementation in particular, the game board's dimensions are 10x10, and there are 10 mines randomly scattered throughout the board. The board class is used to generate an empty board, place the bombs, and initialize a set called "dug" to keep track of the locations where the user has dug.
+The methods, make_new_board, assign_values_to_board, get_num_neighboring_bombs, are all called at the beginning of the game. They perform calculations as mentioned in their names, to help set up the initial game logic. These methods make the board, assign either "safe" or "dangerous" bombs to each respective "tile", and determing the number of neighboring bombs around each "tile".
+The number of neighboring bombs is then displayed when the tile is dug, here either the player has dug a "safe" tile and the game contiunes, or the player has dug a "dangerous" tile and the game is over. If the game ends, a custom game over message is displayed to the player and the final board state is displayed one last time. Conversely, if the player has dug all of the tiles, except the "dangerous" tiles, the game is won, and a custom game over message is displayed as well as the final board state.
+The player is to enter moves as either row,col or row, col; where row and col are both natural numbers from 0-9. The player will contiune to do this until they either dig up a "dangerous" tile and "die", or when they have dug all remaining tiles and none of the "dangerous" tiles.
+## Design Choices:
+The first problem I had was that I had never made a fully functioning program before this project and this course really, so I had no idea where to start. After scouring online resources, I had decided that I would need some kind of function to make a gameBoard, as well as one that returns some kind of visual representation of that board. I decided to index the rows and columns at 0, since the little programming I have done up until now has taught me to do so. However, because of this I also made the moves for the user index at 0, which looking back in hindsight, may not be the best design choice because after playing the game, the controls can get confusing at times.
+The next problem I had was determine the number of neighboring bombs after a move is made. This logic really stumped me for a little while, since I had no idea where to begin from and how to recursively search through the game board, but at the same time, only for the neighboring squares. After figuring this out, I then realized that checking for neighboring bombs at the sides of the game was bugged, since I originally had it hard-coded.
+Additionally, I was originally stuck on checking for if the game is over or not, since I was trying to permute every possible move and see if the player would die or not. But after a little while, I noticed that I was overthinking it, and just added an ‘alive’ field to the main game class.
+The last design choice I debated on is adding a quit function for the player, so they can quit the game at any time. I had some issues with the way I had originally set up prompting the user for moves, so eventually I scrapped the idea, but I do recognize that having one would be nice and hope to add one in the future.
